@@ -1,22 +1,22 @@
 package org.example;
 
-import org.example.dao.AtributosEstruturaLenteDAO;
-import org.example.dao.EspecialidadeDAO;
-import org.example.dao.MedicoDAO;
-import org.example.dao.PacienteDAO;
+import org.example.dao.*;
+import org.example.model.EspecialidadeMedica;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class Main {
-/*
+
     static MedicoDAO medicoDao = new MedicoDAO();
     static AtributosEstruturaLenteDAO atributoEstruturaLenteDao = new AtributosEstruturaLenteDAO();
     static EspecialidadeDAO especialidadeDao = new EspecialidadeDAO();
     static PacienteDAO pacienteDao = new PacienteDAO();
+    static EspecialidadeMedicaDAO especialidadeMedicaDao = new EspecialidadeMedicaDAO();
 
     public static void main(String[] args) throws SQLException {
 
-
+/* 
         System.out.println(medicoDao.count());
 
         Medico medico = new Medico(3, "Fabrícia", "05");
@@ -102,6 +102,23 @@ public class Main {
         listPacientes = pacienteDao.selectAllPaciente();
         listPacientes.forEach(System.out::println);
 */
+//EspecialidadeMedica
+//    EspecialidadeMedica especialidadeMedica = new EspecialidadeMedica(1, "retinoplastia", new  java.sql.Date(2023-01-20), 1, 1);
+//especialidadeMedicaDao.insertEspecialidadeMedica(especialidadeMedica);
+        EspecialidadeMedica especialidadeMedica = especialidadeMedicaDao.selectEspecialidadeMedica(3);
+        System.out.println(especialidadeMedica);
 
+        especialidadeMedica.setObservacao("retinoplastia com glaucoma severo");
+        especialidadeMedicaDao.updateEspecialidadeMedica(especialidadeMedica);
+        especialidadeMedica = especialidadeMedicaDao.selectEspecialidadeMedica(3);
+        System.out.println(especialidadeMedica);
+
+        List<EspecialidadeMedica> listEspecialidadeMedica = especialidadeMedicaDao.selectAllEspecialidadeMedica();
+                listEspecialidadeMedica.forEach(System.out::println);
+
+                especialidadeMedicaDao.deleteEspecialidadeMedica(3);
+                listEspecialidadeMedica = especialidadeMedicaDao.selectAllEspecialidadeMedica();
+        listEspecialidadeMedica.forEach(System.out::println);
+        System.out.println(especialidadeMedicaDao.count());
     }
 }

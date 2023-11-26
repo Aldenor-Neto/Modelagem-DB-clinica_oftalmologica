@@ -16,7 +16,7 @@ public class AtributosEstruturaLenteDAO extends ConexaoDB {
     private static final String SELECT_ALL_ATRIBUTO_ESTRUTURA_LENTE = "SELECT * FROM atributos_estrutura_lente;";
     private static final String DELETE_ATRIBUTO_ESTRUTURA_LENTE_SQL = "DELETE FROM atributos_estrutura_lente WHERE id = ?;";
     private static final String UPDATE_ATRIBUTO_ESTRUTURA_LENTE_SQL = "UPDATE atributos_estrutura_lente SET descricao = ?, lado_olho = ? WHERE id = ?;";
-    private static final String TOTAL = "SELECT count(1) FROM especialidades ;";
+    private static final String TOTAL = "SELECT count(1) FROM atributos_estrutura_lente ;";
 
     public Integer count() {
         Integer count = 0;
