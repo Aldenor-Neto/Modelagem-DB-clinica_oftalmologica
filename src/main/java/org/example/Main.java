@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.dao.*;
-import org.example.model.EspecialidadeMedica;
+import org.example.model.ConsultaMedica;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,6 +13,7 @@ public class Main {
     static EspecialidadeDAO especialidadeDao = new EspecialidadeDAO();
     static PacienteDAO pacienteDao = new PacienteDAO();
     static EspecialidadeMedicaDAO especialidadeMedicaDao = new EspecialidadeMedicaDAO();
+    static ConsultaMedicaDAO consultaMedicaDao = new ConsultaMedicaDAO();
 
     public static void main(String[] args) throws SQLException {
 
@@ -101,7 +102,7 @@ public class Main {
         pacienteDao.deletePaciente(3);
         listPacientes = pacienteDao.selectAllPaciente();
         listPacientes.forEach(System.out::println);
-*/
+
 //EspecialidadeMedica
 //    EspecialidadeMedica especialidadeMedica = new EspecialidadeMedica(1, "retinoplastia", new  java.sql.Date(2023-01-20), 1, 1);
 //especialidadeMedicaDao.insertEspecialidadeMedica(especialidadeMedica);
@@ -120,5 +121,25 @@ public class Main {
                 listEspecialidadeMedica = especialidadeMedicaDao.selectAllEspecialidadeMedica();
         listEspecialidadeMedica.forEach(System.out::println);
         System.out.println(especialidadeMedicaDao.count());
+        */
+
+        //Consulta medica
+        //ConsultaMedica consultaMedica = new ConsultaMedica(1, "Aldenor Silva Neto", new java.sql.Date(1987-12-30), 1, 1);
+        //consultaMedicaDao.insertConsultaMedica(consultaMedica);
+        ConsultaMedica consultaMedica = consultaMedicaDao.selectConsultaMedica(3);
+        System.out.println(consultaMedica);
+
+        consultaMedica.setAssinatura("Aldenor");
+        consultaMedicaDao.updateConsultaMedica(consultaMedica);
+        consultaMedica = consultaMedicaDao.selectConsultaMedica(3);
+        System.out.println(consultaMedica);
+
+        List<ConsultaMedica> listaConsultas = consultaMedicaDao.selectAllConsultaMedica();
+        listaConsultas.forEach(System.out::println);
+
+        consultaMedicaDao.deleteConsultaMedica(3);
+        listaConsultas = consultaMedicaDao.selectAllConsultaMedica();
+        listaConsultas.forEach(System.out::println);
+
     }
 }
