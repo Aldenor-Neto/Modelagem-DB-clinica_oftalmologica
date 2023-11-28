@@ -1,8 +1,7 @@
 package org.example;
 
 import org.example.dao.*;
-import org.example.model.EstruturaLente;
-import org.example.model.ObservacaoLaudo;
+import org.example.model.EspecificacaoLente;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,6 +17,7 @@ public class Main {
     static ReceitaOculosDAO receitaOculosDao = new ReceitaOculosDAO();
     static ObservacaoLaudoDAO observacaoLaudoDao = new ObservacaoLaudoDAO();
     static EstruturaLenteDAO estruturaLenteDao = new EstruturaLenteDAO();
+    static EspecificacaoLenteDAO especificacaoLenteDao = new EspecificacaoLenteDAO();
 
     public static void main(String[] args) throws SQLException {
 
@@ -197,6 +197,22 @@ ReceitaOculos receitaOculos = receitaOculosDao.selectReceitaOculos(3);
         listEstruturaLente = estruturaLenteDao.selectAllEstruturaLente();
         listEstruturaLente.forEach(System.out::println);
  */
+//Especificacoes lentes
+        EspecificacaoLente especificacaoLente = new EspecificacaoLente(1, 580f, 1, 1);
+        //especificacaoLenteDao.insertEspecificacaoLente(especificacaoLente);
+        especificacaoLente = especificacaoLenteDao.selectEspecificacaoLente(4);
+        System.out.println(especificacaoLente);
 
+        especificacaoLente.setValor(900f);
+        especificacaoLenteDao.updateEspecificacaoLente(especificacaoLente);
+        especificacaoLente = especificacaoLenteDao.selectEspecificacaoLente(4);
+        System.out.println(especificacaoLente);
+
+        List<EspecificacaoLente> listEspecificacoesLente = especificacaoLenteDao.selectAllEspecificacaoLente();
+        listEspecificacoesLente.forEach(System.out::println);
+
+        especificacaoLenteDao.deleteEspecificacaoLente(5);
+listEspecificacoesLente = especificacaoLenteDao.selectAllEspecificacaoLente();
+listEspecificacoesLente.forEach(System.out::println);
     }
 }
