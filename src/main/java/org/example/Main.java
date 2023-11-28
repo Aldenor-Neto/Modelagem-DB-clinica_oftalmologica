@@ -1,7 +1,8 @@
 package org.example;
 
 import org.example.dao.*;
-import org.example.model.ConsultaMedica;
+import org.example.model.EstruturaLente;
+import org.example.model.ObservacaoLaudo;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -14,6 +15,9 @@ public class Main {
     static PacienteDAO pacienteDao = new PacienteDAO();
     static EspecialidadeMedicaDAO especialidadeMedicaDao = new EspecialidadeMedicaDAO();
     static ConsultaMedicaDAO consultaMedicaDao = new ConsultaMedicaDAO();
+    static ReceitaOculosDAO receitaOculosDao = new ReceitaOculosDAO();
+    static ObservacaoLaudoDAO observacaoLaudoDao = new ObservacaoLaudoDAO();
+    static EstruturaLenteDAO estruturaLenteDao = new EstruturaLenteDAO();
 
     public static void main(String[] args) throws SQLException {
 
@@ -121,7 +125,7 @@ public class Main {
                 listEspecialidadeMedica = especialidadeMedicaDao.selectAllEspecialidadeMedica();
         listEspecialidadeMedica.forEach(System.out::println);
         System.out.println(especialidadeMedicaDao.count());
-        */
+
 
         //Consulta medica
         //ConsultaMedica consultaMedica = new ConsultaMedica(1, "Aldenor Silva Neto", new java.sql.Date(1987-12-30), 1, 1);
@@ -140,6 +144,59 @@ public class Main {
         consultaMedicaDao.deleteConsultaMedica(3);
         listaConsultas = consultaMedicaDao.selectAllConsultaMedica();
         listaConsultas.forEach(System.out::println);
+
+
+        //receita oculos
+        //ReceitaOculos receitaOculos = new ReceitaOculos(1, "detalahmento do oculos", new  java.sql.Date(2022-12-20), 1);
+//receitaOculosDao.insertReceitaOculos(receitaOculos);
+ReceitaOculos receitaOculos = receitaOculosDao.selectReceitaOculos(3);
+        System.out.println(receitaOculos);
+
+        receitaOculos.setDetalhamento("update no detalhamento do oculos");
+        receitaOculosDao.updateReceitaOculos(receitaOculos);
+        System.out.println(receitaOculos);
+
+        List<ReceitaOculos> listReceitaOculos = receitaOculosDao.selectAllReceitaOculos();
+        listReceitaOculos.forEach(System.out::println);
+
+        receitaOculosDao.deleteReceitaOculos(3);
+        listReceitaOculos = receitaOculosDao.selectAllReceitaOculos();
+        listReceitaOculos.forEach(System.out::println);
+
+//Observacao Laudo
+        ObservacaoLaudo observacaoLaudo = new ObservacaoLaudo(1, "nova observação", 1);
+//        observacaoLaudoDao.insertObservacaoLaudo(observacaoLaudo);
+        observacaoLaudo = observacaoLaudoDao.selectObservacaoLaudo(3);
+//        System.out.println(observacaoLaudo);
+
+        observacaoLaudo.setDescricao("update na nova observação");
+        observacaoLaudoDao.updateObservacaoLaudo(observacaoLaudo);
+        System.out.println(observacaoLaudo);
+
+        List<ObservacaoLaudo> listObservacoesLaudos = observacaoLaudoDao.selectAllObservacaoLaudo();
+        listObservacoesLaudos.forEach(System.out::println);
+
+        observacaoLaudoDao.deleteObservacaoLaudo(3);
+        listObservacoesLaudos = observacaoLaudoDao.selectAllObservacaoLaudo();
+        listObservacoesLaudos.forEach(System.out::println);
+
+//Estrutura lente
+        EstruturaLente estruturaLente = new EstruturaLente(1, "nova estrutura lente", 1, 1);
+//        estruturaLenteDao.insertEstruturaLente(estruturaLente);
+        estruturaLente = estruturaLenteDao.selectEstruturaLente(2);
+        estruturaLente.setTipoCorrecao("update estrutura lente");
+        estruturaLenteDao.updateEstruturaLente(estruturaLente);
+        estruturaLente = estruturaLenteDao.selectEstruturaLente(2);
+        System.out.println(estruturaLente);
+
+        List<EstruturaLente> listEstruturaLente = estruturaLenteDao.selectAllEstruturaLente();
+        listEstruturaLente.forEach(System.out::println);
+
+        estruturaLenteDao.deleteEstruturaLente(3);
+
+        listEstruturaLente = estruturaLenteDao.selectAllEstruturaLente();
+        listEstruturaLente.forEach(System.out::println);
+ */
 
     }
 }
