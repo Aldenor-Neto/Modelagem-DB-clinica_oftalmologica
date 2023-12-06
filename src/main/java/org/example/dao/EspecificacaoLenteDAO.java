@@ -17,7 +17,7 @@ public class EspecificacaoLenteDAO extends ConexaoDB {
     private static final String SELECT_ALL_ESPECIFICACAO_LENTE = "SELECT * FROM especificacoes_lente;";
     private static final String DELETE_ESPECIFICACAO_LENTE_SQL = "DELETE FROM especificacoes_lente WHERE id = ?;";
     private static final String UPDATE_ESPECIFICACAO_LENTE_SQL = "UPDATE especificacoes_lente SET valor = ?, id_estrutura_lente = ?, id_atributo_estrutura_lente = ? WHERE id = ?;";
-    private static final String TOTAL = "SELECT count(1) FROM especificacoes_lentes ;";
+    private static final String TOTAL = "SELECT count(1) FROM especificacoes_lente ;";
 
     public Integer count() {
         Integer count = 0;
